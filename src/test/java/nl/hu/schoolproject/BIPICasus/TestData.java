@@ -1,0 +1,35 @@
+package nl.hu.schoolproject.BIPICasus;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import nl.hu.schoolproject.BIPICasus.model.BTWCode;
+import nl.hu.schoolproject.BIPICasus.model.Bedrijf;
+import nl.hu.schoolproject.BIPICasus.model.Factuur;
+import nl.hu.schoolproject.BIPICasus.model.Klant;
+import nl.hu.schoolproject.BIPICasus.model.Product;
+
+public class TestData {
+	public List<Factuur> facturen = new ArrayList<Factuur>();
+	public List<Product> producten = new ArrayList<Product>();
+	public Map<String, Bedrijf> bedrijven = new HashMap();
+	
+	public TestData() {
+		Calendar cal = Calendar.getInstance();
+	    Date todayDate = new Date();
+	    cal.setTime(todayDate);
+	    
+		producten.add(new Product(0, "BifiTestProduct", 10, 12, BTWCode.laag, "ditIsEenUnit"));
+		facturen.add(new Factuur(todayDate, 1, new Klant("1_5"), producten.get(0)));
+		facturen.add(new Factuur(todayDate, 2, new Klant("2_5"), producten.get(0)));
+		bedrijven.put("werkendBedrijf", new Bedrijf("werkendBedrijf", "ganzentraat", 122, "dfed45", "utrecht", "12312414", "ING212423432", "32443FRT"));
+		bedrijven.put("postcodeCijferTeVeel", new Bedrijf("werkendBedrijf", "ganzentraat", 122, "dfed457", "utrecht", "12312414", "ING212423432", "32443FRT"));
+		bedrijven.put("postcodeLetterTeVeel", new Bedrijf("werkendBedrijf", "ganzentraat", 122, "dfddd45", "utrecht", "12312414", "ING212423432", "32443FRT"));
+		bedrijven.put("bicLengte10", new Bedrijf("werkendBedrijf", "ganzentraat", 122, "dfed45", "utrecht", "12312414", "ING212423432", "32443FRTYY"));
+		bedrijven.put("bicLengte11", new Bedrijf("werkendBedrijf", "ganzentraat", 122, "dfed45", "utrecht", "12312414", "ING212423432", "32443FRTYYY"));
+	}
+}
