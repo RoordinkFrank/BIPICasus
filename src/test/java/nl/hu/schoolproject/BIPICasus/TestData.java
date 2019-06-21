@@ -1,5 +1,7 @@
 package nl.hu.schoolproject.BIPICasus;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,16 +21,12 @@ public class TestData {
 	public Map<String, Bedrijf> bedrijven = new HashMap();
 	
 	public TestData() {
-		Calendar cal = Calendar.getInstance();
-	    Date todayDate = new Date();
-	    cal.setTime(todayDate);
-	    
 		producten.add(new Product(0, "BifiTestProduct", 10, 12, BTWCode.laag, "ditIsEenUnit"));
-		facturen.add(new Factuur(todayDate, 1, new Klant("1_5"), producten.get(0)));
-		facturen.add(new Factuur(todayDate, 2, new Klant("2_5"), producten.get(0)));
+		facturen.add(new Factuur(LocalDateTime.of(1992, 9, 24, 4, 4, 4), 1, new Klant("1_5"), producten.get(0)));
+		facturen.add(new Factuur(LocalDateTime.now(), 2, new Klant("2_5"), producten.get(0)));
 		
-		facturen.add(new Factuur(todayDate ,3, new Klant("Frank"), producten.get(0)));
-		facturen.add(new Factuur(todayDate ,4, new Klant("Daan"), producten.get(0)));
+		facturen.add(new Factuur(LocalDateTime.now(),3, new Klant("Frank"), producten.get(0)));
+		facturen.add(new Factuur(LocalDateTime.now(),4, new Klant("Daan"), producten.get(0)));
 		
 		bedrijven.put("werkendBedrijf", new Bedrijf("werkendBedrijf", "ganzentraat", 122, "dfed45", "utrecht", "12312414", "ING212423432", "32443FRT"));
 		bedrijven.put("postcodeCijferTeVeel", new Bedrijf("werkendBedrijf", "ganzentraat", 122, "dfed457", "utrecht", "12312414", "ING212423432", "32443FRT"));

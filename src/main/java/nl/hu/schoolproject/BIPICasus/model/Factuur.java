@@ -1,21 +1,24 @@
 package nl.hu.schoolproject.BIPICasus.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
 
+import nl.hu.schoolproject.BIPICasus.util.BIPIUtil;
+
 public class Factuur{
-	private Date date;
+	private LocalDateTime date;
 	//the object that comes out of the mongoDB can not cast to LocalDate, only Date.
 	private int nummer;
 	private Klant klant;
 	private Product product;
 	
 	public Factuur() {}
-	public Factuur(Date date, int nummer, Klant klant, Product product) {
+	public Factuur(LocalDateTime date, int nummer, Klant klant, Product product) {
 		super();
 		this.date = date;
 		this.nummer = nummer;
@@ -25,7 +28,8 @@ public class Factuur{
 	
 	public static Factuur getFactuurVersion(Document mongoObject) {
 		Factuur f = new Factuur();
-		f.date = (Date) mongoObject.get("date");
+		//MongoDB pakt LocalDate time niet goed, Date wel maar daar krijg ik depricated errors.
+		f.date = BIPIUtil.ConvertStringToLocalDateTime((String) mongoObject.get("LocalDateTime"));
 		f.nummer = (int)mongoObject.get("nummer");
 		f.klant =  Klant.getKlantVersion((Document) mongoObject.get("klant"));
 		f.product = Product.getProductVersion((Document) mongoObject.get("product"));
@@ -33,7 +37,7 @@ public class Factuur{
 	}
 	
 	public static Document getDocumentVersion(Factuur localF) {
-		Document  doc = new Document ("date", localF.getDate())
+		Document  doc = new Document ("LocalDateTime", localF.getDate().toString())
 		        .append("nummer", localF.getNummer())
 		        .append("klant",  Klant.getDocumentVersion(localF.getKlant()))
 		        .append("product", Product.getDocumentVersion(localF.getProduct()));
@@ -41,10 +45,10 @@ public class Factuur{
 	}
 	
 	
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 	public int getNummer() {
@@ -108,4 +112,6 @@ public class Factuur{
 			return false;
 		return true;
 	}
+	
+	
 }
