@@ -2,6 +2,9 @@ package nl.hu.schoolproject.BIPICasus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.Document;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -19,14 +22,19 @@ private static TestData testData;
 	}
 	
 	@Test
-	public void testCreateInvoioce() throws FileManagerException{
+	public void testCreateInvoice() throws FileManagerException{
 		//kan alleen worden gecheckt zodra files ook weer uitgelezen worden,
 		//maar dat is niet onderdeel van de opdracht?
 		//handmatige controles via files bekijken wel mogelijk
+		List<Factuur> facturen = new ArrayList<Factuur>();
+		facturen.add(testData.facturen.get(2));
+		facturen.add(testData.facturen.get(3));
+		
+		
 		InvoiceExportFormat invoiceFormat = new InvoiceExportFormat();
-		invoiceFormat.createInvoice(1 ,testData.bedrijven.get("werkendBedrijf"));
-		invoiceFormat.createInvoice(2 ,testData.bedrijven.get("postcodeLetterTeVeel"));
-		invoiceFormat.createInvoice(3 ,testData.bedrijven.get("postcodeCijferTeVeel"));
+		invoiceFormat.createInvoice(testData.bedrijven.get("werkendBedrijf"), facturen);
+		invoiceFormat.createInvoice(testData.bedrijven.get("postcodeLetterTeVeel"), facturen);
+		invoiceFormat.createInvoice(testData.bedrijven.get("postcodeCijferTeVeel"), facturen);
 		//Alle variatie van werkend bedrijf zouden hier eigenlijk opnieuw moeten worden getest.
 	}
 }

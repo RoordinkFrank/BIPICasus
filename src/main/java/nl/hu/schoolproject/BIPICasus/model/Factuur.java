@@ -8,8 +8,6 @@ import org.bson.Document;
 import com.mongodb.BasicDBObject;
 
 public class Factuur{
-	
-
 	private Date date;
 	//the object that comes out of the mongoDB can not cast to LocalDate, only Date.
 	private int nummer;
@@ -110,6 +108,4 @@ public class Factuur{
 			return false;
 		return true;
 	}
-	
-
 }
