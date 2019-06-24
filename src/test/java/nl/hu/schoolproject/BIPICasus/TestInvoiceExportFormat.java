@@ -30,7 +30,6 @@ private static TestData testData;
 		facturen.add(testData.facturen.get(2));
 		facturen.add(testData.facturen.get(3));
 		
-		
 		InvoiceExportFormat invoiceFormat = new InvoiceExportFormat();
 		invoiceFormat.createInvoice(testData.bedrijven.get("werkendBedrijf"), facturen);
 		invoiceFormat.createInvoice(testData.bedrijven.get("postcodeLetterTeVeel"), facturen);

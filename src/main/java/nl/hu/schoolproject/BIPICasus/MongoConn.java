@@ -1,7 +1,9 @@
 package nl.hu.schoolproject.BIPICasus;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -59,6 +61,33 @@ public class MongoConn {
 			mongoException.printStackTrace();
 		}
 		return false;
+	}
+	
+	public static List<Factuur> retrieveMontlyFacturen(int year, int month) {
+		return retrieveMontlyFacturen(year, month, DATABASE);
+	}
+	
+	public static List<Factuur> retrieveMontlyFacturen(int year, int month, DatabaseName name) {
+		List<Factuur> montlyFacturen = new ArrayList<Factuur>();
+		try (MongoClient mongoClient = new MongoClient(uri)) {
+			MongoDatabase db = mongoClient.getDatabase(name.toString());
+			MongoCollection<Document> c = db.getCollection(COLLECTIONFACTUUR);
+			
+			Iterator<Document> it = c.find().iterator();
+			while (it.hasNext()) {
+				Document document = it.next();
+				
+				Factuur f = Factuur.getFactuurVersion(document);
+				if (f.getDate().getMonthValue() == month && f.getDate().getYear() == year) {
+					montlyFacturen.add(f);
+				}
+			}
+			mongoClient.close();// is did nodig of wordt dit door de try clausule automatisch aangeroepen?
+		} catch (MongoException mongoException) {
+			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
+			mongoException.printStackTrace();
+		}
+		return montlyFacturen;
 	}
 
 	public static Document retrieveFactuur(int nummer) {

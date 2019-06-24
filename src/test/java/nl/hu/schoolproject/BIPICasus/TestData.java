@@ -25,8 +25,9 @@ public class TestData {
 		facturen.add(new Factuur(LocalDateTime.of(1992, 9, 24, 4, 4, 4), 1, new Klant("1_5"), producten.get(0)));
 		facturen.add(new Factuur(LocalDateTime.now(), 2, new Klant("2_5"), producten.get(0)));
 		
-		facturen.add(new Factuur(LocalDateTime.now(),3, new Klant("Frank"), producten.get(0)));
-		facturen.add(new Factuur(LocalDateTime.now(),4, new Klant("Daan"), producten.get(0)));
+		facturen.add(new Factuur(LocalDateTime.of(1992, 9, 28, 4, 8, 4),3, new Klant("Frank"), producten.get(0)));
+		facturen.add(new Factuur(LocalDateTime.of(1992, 9, 26, 4, 4, 4),4, new Klant("Daan"), producten.get(0)));
+		facturen.add(new Factuur(LocalDateTime.of(1991, 9, 26, 4, 4, 4),4, new Klant("Joost"), producten.get(0)));
 		
 		bedrijven.put("werkendBedrijf", new Bedrijf("werkendBedrijf", "ganzentraat", 122, "POST45", "utrecht", "12312414", "ING212423432", "32443FRT"));
 		bedrijven.put("postcodeCijferTeVeel", new Bedrijf("werkendBedrijf", "ganzentraat", 122, "dfed457", "utrecht", "12312414", "ING212423432", "32443FRT"));
