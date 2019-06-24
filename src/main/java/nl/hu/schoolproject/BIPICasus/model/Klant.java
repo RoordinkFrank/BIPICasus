@@ -2,7 +2,6 @@ package nl.hu.schoolproject.BIPICasus.model;
 
 import org.bson.Document;
 
-import com.mongodb.BasicDBObject;
 
 public class Klant{
 	

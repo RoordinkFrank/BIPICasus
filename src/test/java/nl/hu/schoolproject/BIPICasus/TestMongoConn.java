@@ -2,11 +2,6 @@ package nl.hu.schoolproject.BIPICasus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
@@ -14,11 +9,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import nl.hu.schoolproject.BIPICasus.model.BTWCode;
 import nl.hu.schoolproject.BIPICasus.model.DatabaseName;
 import nl.hu.schoolproject.BIPICasus.model.Factuur;
-import nl.hu.schoolproject.BIPICasus.model.Klant;
-import nl.hu.schoolproject.BIPICasus.model.Product;
 
 public class TestMongoConn {
 
@@ -43,13 +35,10 @@ public class TestMongoConn {
 		MongoConn.insertFactuur(testData.facturen.get(3), DatabaseName.BIPICasusTest);
 		MongoConn.insertFactuur(testData.facturen.get(4), DatabaseName.BIPICasusTest);
 		List<Factuur> montlyFacturen = MongoConn.retrieveMontlyFacturen(1992, 9);
-		for (Factuur factuur : montlyFacturen){
-			assertEquals(montlyFacturen.size(), 2);
-			assertEquals(testData.facturen.get(2), montlyFacturen.get(0));
-			assertEquals(testData.facturen.get(3), montlyFacturen.get(1));
-			//Als dit synchroon is gaat het goed, mocht dit asynchroon gaan dan moet hier wat
-			//meer moeite gedaan worden.
-		}
+		assertEquals(montlyFacturen.size(), 2);
+		assertEquals(testData.facturen.get(2), montlyFacturen.get(0));
+		assertEquals(testData.facturen.get(3), montlyFacturen.get(1));
+		//gaat mogelijk asynchroon fout
 	}
 	
 	@AfterAll
