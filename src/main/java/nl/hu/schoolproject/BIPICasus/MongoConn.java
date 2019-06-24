@@ -1,5 +1,6 @@
 package nl.hu.schoolproject.BIPICasus;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,15 +12,20 @@ import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.slf4j.LoggerFactory;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 
 import nl.hu.schoolproject.BIPICasus.model.DatabaseName;
 import nl.hu.schoolproject.BIPICasus.model.Factuur;
+import nl.hu.schoolproject.BIPICasus.model.Klant;
 
 public class MongoConn {
 
@@ -52,7 +58,7 @@ public class MongoConn {
 			mongoClient.close();// is did nodig of wordt dit door de try clausule automatisch aangeroepen?
 		} catch (MongoException mongoException) {
 			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			logger.info(mongoException.getMessage());
+			mongoException.printStackTrace();
 		}
 		return false;
 	}
@@ -83,7 +89,7 @@ public class MongoConn {
 			mongoClient.close();// is did nodig of wordt dit door de try clausule automatisch aangeroepen?
 		} catch (MongoException mongoException) {
 			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			logger.info(mongoException.getMessage());
+			mongoException.printStackTrace();
 		}
 		return montlyFacturen;
 	}
@@ -108,7 +114,7 @@ public class MongoConn {
 			mongoClient.close();// is did nodig of wordt dit door de try clausule automatisch aangeroepen?
 		} catch (MongoException mongoException) {
 			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			logger.info(mongoException.getMessage());
+			mongoException.printStackTrace();
 		}
 		return null;
 	}
@@ -128,7 +134,7 @@ public class MongoConn {
 			logger.info("inserted "+factuur.toString());
 		} catch (MongoException mongoException) {
 			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			logger.info(mongoException.getMessage());
+			mongoException.printStackTrace();
 			return false;
 		}
 		return true;

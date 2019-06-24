@@ -14,11 +14,6 @@ import java.io.IOException;
  * 
  */
 public class FileManager{
-	private static final String fileNotCorrect = "The specified file is a directory, or can not be created, the specified map does not exist or opened for any other reason";
-	private static final String THE_FILE_WRITER_IS_ALREADY_CLOSED = "The fileWriter is already closed";
-	private static final String AN_IO_EXCEPTION_SEEMS_TO_HAVE_OCCURED = "An IOException seems to have occured";
-	private static final String THE_FILE_READER_IS_ALREADY_CLOSED = "The fileReader is already closed";
-	private static final String A_FILE_WRITER_CONNECTION_DOES_NOT_SEEM_TO_BE_OPEN = "A fileWriter connection does not seem to be open";
 	private BufferedWriter bufferedWriter;
 	private BufferedReader bufferedReader;
 	
@@ -48,7 +43,7 @@ public class FileManager{
 		try {
 			bufferedWriter = new BufferedWriter(new FileWriter(filePath));
 		} catch (IOException e) {
-			throw new FileManagerException(filePath+fileNotCorrect);
+			throw new FileManagerException(filePath+"The specified file is a directory, or can not be created, the specified map does not exist or opened for any other reason");
 		}
 	}
 	
@@ -80,7 +75,7 @@ public class FileManager{
 				bufferedReader = new BufferedReader(f);
 			}
 			} catch (FileNotFoundException e) {
-			throw new FileManagerException(fileNotCorrect+", Message:" + e.getMessage());
+			throw new FileManagerException("The specified file is a directory, does not exist or can not be opened for any other reason, Message:" + e.getMessage());
 		}
 	}
 	
@@ -91,9 +86,9 @@ public class FileManager{
 		try {
 			bufferedWriter.write(text);
 		} catch (IOException e) {
-			throw new FileManagerException(AN_IO_EXCEPTION_SEEMS_TO_HAVE_OCCURED);
+			throw new FileManagerException("an IOException seems to have occured");
 		} catch (NullPointerException e){
-			throw new FileManagerException(A_FILE_WRITER_CONNECTION_DOES_NOT_SEEM_TO_BE_OPEN);
+			throw new FileManagerException("A fileWriter connection does not seem to be open");
 		}
 	}
 	
@@ -108,9 +103,9 @@ public class FileManager{
 			bufferedWriter.write(text);
 	        bufferedWriter.newLine();
 		} catch (IOException e) {
-			throw new FileManagerException(AN_IO_EXCEPTION_SEEMS_TO_HAVE_OCCURED);
+			throw new FileManagerException("an IOException seems to have occured");
 		} catch (NullPointerException e){
-			throw new FileManagerException(A_FILE_WRITER_CONNECTION_DOES_NOT_SEEM_TO_BE_OPEN);
+			throw new FileManagerException("A fileWriter connection does not seem to be open");
 		}
 	}
 	
@@ -123,9 +118,9 @@ public class FileManager{
 		try {
 			bufferedWriter.close();
 		} catch (IOException e) {
-			throw new FileManagerException(AN_IO_EXCEPTION_SEEMS_TO_HAVE_OCCURED);
+			throw new FileManagerException("An IOException seems to have occured");
 		} catch (NullPointerException e){
-			throw new FileManagerException(THE_FILE_WRITER_IS_ALREADY_CLOSED);
+			throw new FileManagerException("The fileWriter is already closed");
 		}
 	}
 	
@@ -139,9 +134,9 @@ public class FileManager{
 		try {
 			return bufferedReader.readLine();
 		} catch (IOException e) {
-			throw new FileManagerException(AN_IO_EXCEPTION_SEEMS_TO_HAVE_OCCURED);
+			throw new FileManagerException("An IOException seems to have occured");
 		} catch (NullPointerException e){
-			throw new FileManagerException(A_FILE_WRITER_CONNECTION_DOES_NOT_SEEM_TO_BE_OPEN);
+			throw new FileManagerException("A fileWriter connection does not seem to be open");
 		}
 	}
 	
@@ -154,9 +149,9 @@ public class FileManager{
 		try {
 			bufferedReader.close();
 		} catch (IOException e) {
-			throw new FileManagerException(AN_IO_EXCEPTION_SEEMS_TO_HAVE_OCCURED);
+			throw new FileManagerException("An IOException seems to have occured");
 		} catch (NullPointerException e){
-			throw new FileManagerException(THE_FILE_READER_IS_ALREADY_CLOSED);
+			throw new FileManagerException("The fileReader is already closed");
 		}
 	}
 	

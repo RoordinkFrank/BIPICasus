@@ -2,6 +2,11 @@ package nl.hu.schoolproject.BIPICasus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
@@ -9,8 +14,11 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import nl.hu.schoolproject.BIPICasus.model.BTWCode;
 import nl.hu.schoolproject.BIPICasus.model.DatabaseName;
 import nl.hu.schoolproject.BIPICasus.model.Factuur;
+import nl.hu.schoolproject.BIPICasus.model.Klant;
+import nl.hu.schoolproject.BIPICasus.model.Product;
 
 public class TestMongoConn {
 

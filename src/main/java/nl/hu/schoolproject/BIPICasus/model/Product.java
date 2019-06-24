@@ -1,6 +1,10 @@
 package nl.hu.schoolproject.BIPICasus.model;
 
+import java.util.Date;
+
 import org.bson.Document;
+
+import com.mongodb.BasicDBObject;
 
 import nl.hu.schoolproject.BIPICasus.Formatter;
 
