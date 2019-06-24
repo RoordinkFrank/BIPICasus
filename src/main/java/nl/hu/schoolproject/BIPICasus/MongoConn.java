@@ -72,6 +72,10 @@ public class MongoConn {
 				Document document = it.next();
 				
 				Factuur f = Factuur.getFactuurVersion(document);
+				System.out.println(f.getDate().getMonthValue());
+				System.out.println(month);
+				System.out.println(f.getDate().getYear());
+				System.out.println(year);
 				if (f.getDate().getMonthValue() == month && f.getDate().getYear() == year) {
 					montlyFacturen.add(f);
 				}

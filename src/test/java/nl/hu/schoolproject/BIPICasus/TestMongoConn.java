@@ -35,10 +35,12 @@ public class TestMongoConn {
 		MongoConn.insertFactuur(testData.facturen.get(3), DatabaseName.BIPICasusTest);
 		MongoConn.insertFactuur(testData.facturen.get(4), DatabaseName.BIPICasusTest);
 		List<Factuur> montlyFacturen = MongoConn.retrieveMontlyFacturen(1992, 9);
-		assertEquals(montlyFacturen.size(), 2);
-		assertEquals(testData.facturen.get(2), montlyFacturen.get(0));
-		assertEquals(testData.facturen.get(3), montlyFacturen.get(1));
-		//gaat mogelijk asynchroon fout
+			System.out.println(montlyFacturen.size());
+			assertEquals(montlyFacturen.size(), 2);
+			assertEquals(testData.facturen.get(2), montlyFacturen.get(0));
+			assertEquals(testData.facturen.get(3), montlyFacturen.get(1));
+			//Als dit synchroon is gaat het goed, mocht dit asynchroon gaan dan moet hier wat
+			//meer moeite gedaan worden.
 	}
 	
 	@AfterAll
