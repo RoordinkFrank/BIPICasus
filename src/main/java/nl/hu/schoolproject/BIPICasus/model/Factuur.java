@@ -1,12 +1,8 @@
 package nl.hu.schoolproject.BIPICasus.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import org.bson.Document;
-
-import com.mongodb.BasicDBObject;
 
 import nl.hu.schoolproject.BIPICasus.util.BIPIUtil;
 
@@ -17,15 +13,20 @@ public class Factuur{
 	private Klant klant;
 	private Product product;
 	
+	private StringBuilder sb;
+	
 	public Factuur() {}
 	public Factuur(LocalDateTime date, int nummer, Klant klant, Product product) {
 		super();
-		this.date = date;
-		this.nummer = nummer;
-		this.klant = klant;
-		this.setProduct(product);
+		sb = new StringBuilder();
+		setDate(date);
+		setNummer(nummer);
+		setKlant(klant);
+		setProduct(product);
+		sb.append(product.checkConstructionErrors());
+		sb.append(klant.checkConstructionErrors());
 	}
-	
+
 	public static Factuur getFactuurVersion(Document mongoObject) {
 		Factuur f = new Factuur();
 		//MongoDB pakt LocalDate time niet goed, Date wel maar daar krijg ik depricated errors.
@@ -34,6 +35,11 @@ public class Factuur{
 		f.klant =  Klant.getKlantVersion((Document) mongoObject.get("klant"));
 		f.product = Product.getProductVersion((Document) mongoObject.get("product"));
 		return f;
+	}
+	
+	
+	public String checkConstructionErrors() {
+		return sb.toString();
 	}
 	
 	public static Document getDocumentVersion(Factuur localF) {

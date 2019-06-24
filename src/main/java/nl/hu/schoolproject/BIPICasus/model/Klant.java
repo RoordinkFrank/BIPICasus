@@ -6,18 +6,26 @@ import com.mongodb.BasicDBObject;
 
 public class Klant{
 	
+	//String door het format
+	private String klantID;
+	
+	private StringBuilder sb;
+	
 	public Klant() {}
 	public Klant(String id) {
 		setId(id);
+		sb = new StringBuilder();
+		//sb doet voorlopig nog niets in deze klasse.
 	}
-	
-	//String door het format
-	private String klantID;
 
 	public static Klant getKlantVersion(Document mongoObject) {
 		Klant k = new Klant();
 		k.klantID = (String)mongoObject.get("klantID");
 		return k;
+	}
+	
+	public String checkConstructionErrors() {
+		return sb.toString();
 	}
 	
 	public static Document getDocumentVersion(Klant localK) {

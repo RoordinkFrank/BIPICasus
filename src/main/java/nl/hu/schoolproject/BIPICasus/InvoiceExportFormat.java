@@ -37,8 +37,21 @@ public class InvoiceExportFormat {
 	//maar in welk scenario geeft dat meer dan 1 factuur?
 	private void createInvoiceInformatieRegel(FileManager m, Factuur factuur) throws FileManagerException {
 		m.write("Type: "+"F"+" ");
-		m.write("Factuurdatum ");
-		//FACTUUR MOET NAAR DATE EN TIJD APART.
-		m.writeLine("invoiceNummer: ");
+		m.write("Factuurdatum: "+BIPIUtil.getDate(factuur.getDate())+" ");
+		m.writeLine("Factuurnummer: "+factuur.getNummer());
+		createFactuurRegel(m, factuur);
+		//Hier zou je 1 of meer factuurRegels eraan kunnen koppelen maar ik snap niet echt in welk geval dit speelt.
+	}
+
+	private void createFactuurRegel(FileManager m, Factuur factuur) throws FileManagerException {
+		m.write("Type: "+"R"+" ");
+		m.write("Productomschrijving: "+factuur.getProduct().getProductNaame()+" ");
+		m.write("Productomschrijving: "+factuur.getProduct().getProductNaame()+" ");
+		m.write("Aantal: "+factuur.getProduct().getQuantity()+" ");
+		m.write("Prijs per stuk: "+factuur.getProduct().getTotaalprijsExBTWp()+" ");
+		m.write("BTW type: "+factuur.getProduct().getBtwCode()+" ");
+		m.write("Regel datum: "+BIPIUtil.getDate(factuur.getDate())+" ");
+		m.write("Regel tijd: "+BIPIUtil.getTime(factuur.getDate())+" ");
+		m.writeLine("Eenheid: "+factuur.getProduct().getUnit()+" ");
 	}
 }

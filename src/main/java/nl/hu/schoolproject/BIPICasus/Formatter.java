@@ -23,4 +23,18 @@ public class Formatter{
 		}
 		return "postcode is not in the A-Zx4 0-9X2 format";
 	}
+	
+	public static String checkFactuurAantalAllowed(double aantal){
+		int maxAantal = 1000;
+		if (aantal < maxAantal)
+			return "";
+		return "Aantal mag niet hoger of gelijk zijn dan "+maxAantal;
+	}
+	
+	public static String checkFactuurPrijsAllowed(double prijs){
+		int maxPrijs = 100000;
+		if (prijs < maxPrijs)
+			return "";
+		return "Prijs mag niet hoger of gelijk zijn dan "+maxPrijs+" komen";
+	}
 }

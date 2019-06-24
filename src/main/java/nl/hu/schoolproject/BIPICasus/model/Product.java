@@ -6,6 +6,8 @@ import org.bson.Document;
 
 import com.mongodb.BasicDBObject;
 
+import nl.hu.schoolproject.BIPICasus.Formatter;
+
 public class Product{
 
 	private int productID;
@@ -14,6 +16,8 @@ public class Product{
 	private double totaalprijsExBTWp;
 	private BTWCode btwCode;
 	private String unit;
+	
+	private StringBuilder sb;
 
 	public Product() {
 	};
@@ -21,12 +25,18 @@ public class Product{
 	public Product(int productID, String productNaame, double quantity, double totaalprijsExBTWp, BTWCode btwCode,
 			String unit) {
 		super();
+		sb = new StringBuilder();
 		this.productID = productID;
 		this.productNaame = productNaame;
-		this.quantity = quantity;
-		this.totaalprijsExBTWp = totaalprijsExBTWp;
+		sb.append(this.quantity = quantity);
+		sb.append(this.totaalprijsExBTWp = totaalprijsExBTWp);
 		this.btwCode = btwCode;
 		this.unit = unit;
+	}
+	
+
+	public String checkConstructionErrors() {
+		return sb.toString();
 	}
 	
 	public static Product getProductVersion (Document mongoObject) {
@@ -70,16 +80,24 @@ public class Product{
 		return quantity;
 	}
 
-	public void setQuantity(double quantity) {
-		this.quantity = quantity;
+	public String setQuantity(double quantity) {
+		String error = Formatter.checkFactuurPrijsAllowed(quantity);
+        if (error.equals("")) {
+        	this.quantity = quantity;
+        }
+        return error;
 	}
 
 	public double getTotaalprijsExBTWp() {
 		return totaalprijsExBTWp;
 	}
 
-	public void setTotaalprijsExBTWp(double totaalprijsExBTWp) {
-		this.totaalprijsExBTWp = totaalprijsExBTWp;
+	public String setTotaalprijsExBTWp(double totaalprijsExBTWp) {
+		String error = Formatter.checkFactuurPrijsAllowed(totaalprijsExBTWp);
+        if (error.equals("")) {
+        	this.totaalprijsExBTWp = totaalprijsExBTWp;
+        }
+        return error;
 	}
 
 	public BTWCode getBtwCode() {

@@ -20,4 +20,14 @@ public class BIPIUtil {
 		LocalDateTime localDateTime = LocalDateTime.of(Integer.valueOf(split[0]), Integer.valueOf(split[1]), Integer.valueOf(split[2]), Integer.valueOf(split[3]), Integer.valueOf(split[4]), Integer.valueOf(split[5]));
 		return localDateTime;
 	}
+	
+	public static String getDate(LocalDateTime localDateTime) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy"); 
+		return localDateTime.format(formatter);
+	}
+	
+	public static String getTime(LocalDateTime localDateTime) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss"); 
+		return localDateTime.format(formatter);
+	}
 }

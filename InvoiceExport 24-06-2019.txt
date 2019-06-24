@@ -1,0 +1,5 @@
+Type: B bedrijfsnaam: werkendBedrijf straat: ganzentraat huisnummer: 122 postcode: null plaats: utrecht BTWNummer: 12312414 IBAN: ING212423432 BIC: 32443FRT
+Type: F Factuurdatum: 24-06-2019 Factuurnummer: 3
+Type: R Productomschrijving: BifiTestProduct Productomschrijving: BifiTestProduct Aantal: 10.0 Prijs per stuk: 12.0 BTW type: laag Regel datum: 24-06-2019 Regel tijd: 13:32:42 Eenheid: Euro 
+Type: F Factuurdatum: 24-06-2019 Factuurnummer: 4
+Type: R Productomschrijving: BifiTestProduct Productomschrijving: BifiTestProduct Aantal: 10.0 Prijs per stuk: 12.0 BTW type: laag Regel datum: 24-06-2019 Regel tijd: 13:32:42 Eenheid: Euro 
