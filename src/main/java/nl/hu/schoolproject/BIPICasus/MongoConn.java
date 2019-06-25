@@ -1,6 +1,5 @@
 package nl.hu.schoolproject.BIPICasus;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,21 +11,15 @@ import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.slf4j.LoggerFactory;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 
 import nl.hu.schoolproject.BIPICasus.model.DatabaseName;
 import nl.hu.schoolproject.BIPICasus.model.Factuur;
-import nl.hu.schoolproject.BIPICasus.model.Klant;
-
 public class MongoConn {
 
 	private static Logger logger = LoggerFactory.getLogger(MongoConn.class);

@@ -2,11 +2,6 @@ package nl.hu.schoolproject.BIPICasus;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
@@ -14,11 +9,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import nl.hu.schoolproject.BIPICasus.model.BTWCode;
 import nl.hu.schoolproject.BIPICasus.model.DatabaseName;
 import nl.hu.schoolproject.BIPICasus.model.Factuur;
-import nl.hu.schoolproject.BIPICasus.model.Klant;
-import nl.hu.schoolproject.BIPICasus.model.Product;
 
 public class TestMongoConn {
 
@@ -31,22 +23,22 @@ public class TestMongoConn {
 
 	@Test
 	public void testMongoInsert(){
-		MongoConn.insertFactuur(testData.facturen.get(0), DatabaseName.BIPICasusTest);
+		MongoConn.insertFactuur(testData.facturen.get("testInsertFactuur"), DatabaseName.BIPICasusTest);
 		Document doc = MongoConn.retrieveFactuur(1, DatabaseName.BIPICasusTest);
 		Factuur factuur = Factuur.getFactuurVersion(doc);
-		assertEquals(factuur, testData.facturen.get(0));
+		assertEquals(factuur, testData.facturen.get("testInsertFactuur"));
 	}
 	
 	@Test
-	public void testMongoRetrieveMontlyFacturen() {
-		MongoConn.insertFactuur(testData.facturen.get(2), DatabaseName.BIPICasusTest);
-		MongoConn.insertFactuur(testData.facturen.get(3), DatabaseName.BIPICasusTest);
-		MongoConn.insertFactuur(testData.facturen.get(4), DatabaseName.BIPICasusTest);
+	public void testRetrieveMontlyFacturen() {
+		MongoConn.insertFactuur(testData.facturen.get("testRetrieveMontlyFacturen1"), DatabaseName.BIPICasusTest);
+		MongoConn.insertFactuur(testData.facturen.get("testRetrieveMontlyFacturen2"), DatabaseName.BIPICasusTest);
+		MongoConn.insertFactuur(testData.facturen.get("testRetrieveMontlyFacturen3"), DatabaseName.BIPICasusTest);
 		List<Factuur> montlyFacturen = MongoConn.retrieveMontlyFacturen(1992, 9);
 			System.out.println(montlyFacturen.size());
 			assertEquals(montlyFacturen.size(), 2);
-			assertEquals(testData.facturen.get(2), montlyFacturen.get(0));
-			assertEquals(testData.facturen.get(3), montlyFacturen.get(1));
+			assertEquals(testData.facturen.get("testRetrieveMontlyFacturen1"), montlyFacturen.get(0));
+			assertEquals(testData.facturen.get("testRetrieveMontlyFacturen2"), montlyFacturen.get(1));
 			//Als dit synchroon is gaat het goed, mocht dit asynchroon gaan dan moet hier wat
 			//meer moeite gedaan worden.
 	}
