@@ -51,7 +51,7 @@ public class MongoConn {
 			mongoClient.close();// is did nodig of wordt dit door de try clausule automatisch aangeroepen?
 		} catch (MongoException mongoException) {
 			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			mongoException.printStackTrace();
+			logger.info(mongoException.getMessage());
 		}
 		return false;
 	}
@@ -82,7 +82,7 @@ public class MongoConn {
 			mongoClient.close();// is did nodig of wordt dit door de try clausule automatisch aangeroepen?
 		} catch (MongoException mongoException) {
 			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			mongoException.printStackTrace();
+			logger.info(mongoException.getMessage());
 		}
 		return montlyFacturen;
 	}
@@ -107,7 +107,7 @@ public class MongoConn {
 			mongoClient.close();// is did nodig of wordt dit door de try clausule automatisch aangeroepen?
 		} catch (MongoException mongoException) {
 			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			mongoException.printStackTrace();
+			logger.info(mongoException.getMessage());
 		}
 		return null;
 	}
@@ -127,7 +127,7 @@ public class MongoConn {
 			logger.info("inserted "+factuur.toString());
 		} catch (MongoException mongoException) {
 			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			mongoException.printStackTrace();
+			logger.info(mongoException.getMessage());
 			return false;
 		}
 		return true;

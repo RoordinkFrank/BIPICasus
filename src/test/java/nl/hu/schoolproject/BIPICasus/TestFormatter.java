@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import fileManagment.fileManager.FileManagerException;
+import filemanagment.filemanager.FileManagerException;
 
 public class TestFormatter {
 	private static TestData testData;

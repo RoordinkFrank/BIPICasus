@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import fileManagment.fileManager.FileManagerException;
+import filemanagment.filemanager.FileManagerException;
 import nl.hu.schoolproject.BIPICasus.model.Factuur;
 
 public class TestInvoiceExportFormat {

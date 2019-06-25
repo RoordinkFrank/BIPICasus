@@ -2,8 +2,8 @@ package nl.hu.schoolproject.BIPICasus;
 
 import java.util.List;
 
-import fileManagment.fileManager.FileManager;
-import fileManagment.fileManager.FileManagerException;
+import filemanagment.filemanager.FileManager;
+import filemanagment.filemanager.FileManagerException;
 import nl.hu.schoolproject.BIPICasus.model.Bedrijf;
 import nl.hu.schoolproject.BIPICasus.model.Factuur;
 import nl.hu.schoolproject.BIPICasus.util.BIPIUtil;

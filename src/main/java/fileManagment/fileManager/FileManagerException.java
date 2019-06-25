@@ -1,4 +1,4 @@
-package fileManagment.fileManager;
+package filemanagment.filemanager;
 
 public class FileManagerException extends Exception{
 

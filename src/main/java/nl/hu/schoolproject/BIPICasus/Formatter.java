@@ -3,6 +3,8 @@ package nl.hu.schoolproject.BIPICasus;
 //Should technically be checked in the UI as well.
 //Exceptions are EXPECTED and heavy, String will be giving back instead.
 public class Formatter{
+	private Formatter() {};
+	
 	public static String checkMaxLength(String line, String lineName, int maxLenght){
 		if (maxLenght < line.length()) {
 			return "Max length of "+lineName+" can not be over "+maxLenght;

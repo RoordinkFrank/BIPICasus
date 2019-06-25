@@ -1,4 +1,4 @@
-package fileManagment.fileManager;
+package filemanagment.filemanager;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
