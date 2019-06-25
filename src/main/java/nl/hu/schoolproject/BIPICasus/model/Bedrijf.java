@@ -5,10 +5,14 @@ import nl.hu.schoolproject.BIPICasus.Formatter;
 public class Bedrijf {
 	
 	private String bedrijfsnaam;
-	private String straat;
-	private int huisnummer;
-	private String postcode;
-	private String plaats;
+	private Adress adress;
+	public Adress getAdress() {
+		return adress;
+	}
+
+	public void setAdress(Adress adress) {
+		this.adress = adress;
+	}
 	private String bTWNummer;
 	private String iBAN;
 	private String bIC;
@@ -20,10 +24,8 @@ public class Bedrijf {
 		super();
         sb = new StringBuilder();
 		sb.append(setBedrijfsnaam(bedrijfsnaam));
-		sb.append(setStraat(straat));
-		sb.append(setHuisnummer(huisnummer));
-		sb.append(setPostcode(postcode));
-		sb.append(setPlaats(plaats));
+		adress = new Adress(huisnummer, postcode, plaats, straat);
+		sb.append(adress.checkConstructionErrors());
 		sb.append(setBTWNummer(bTWNummer));
 		sb.append(setIBAN(iBAN));
 		sb.append(setBIC(bIC));
@@ -43,46 +45,7 @@ public class Bedrijf {
         }
         return error;
 	}
-	public String getStraat() {
-		return straat;
-	}
-	public String setStraat(String straat) {
-		String error = Formatter.checkMaxLength(straat, "straat", 60);
-        if (error.equals("")) {
-    		this.straat = straat;
-        }
-        return error;
-	}
-	public int getHuisnummer() {
-		return huisnummer;
-	}
-	public String setHuisnummer(int huisnummer) {
-		String error = Formatter.checkMaxLength(huisnummer, "huisnummer", 10);
-        if (error.equals("")) {
-        	this.huisnummer = huisnummer;
-        }
-        return error;
-	}
-	public String getPostcode() {
-		return postcode;
-	}
-	public String setPostcode(String postcode) {
-		String error = Formatter.checkPostcode(postcode);
-        if (error.equals("")) {
-        	this.postcode = postcode;
-        }
-        return error;
-	}
-	public String getPlaats() {
-		return plaats;
-	}
-	public String setPlaats(String plaats) {
-		String error = Formatter.checkMaxLength(plaats, "plaats", 20);
-        if (error.equals("")) {
-        	this.plaats = plaats;
-        }
-        return error;
-	}
+
 	public String getBTWNummer() {
 		return bTWNummer;
 	}
@@ -113,11 +76,11 @@ public class Bedrijf {
         }
         return error;	
 	}
+
 	@Override
 	public String toString() {
-		return "Bedrijf [bedrijfsnaam=" + bedrijfsnaam + ", Straat=" + straat + ", huisnummer=" + huisnummer
-				+ ", postcode=" + postcode + ", plaats=" + plaats + ", BTWNummer=" + bTWNummer + ", IBAN=" + iBAN
-				+ ", BIC=" + bIC + "]";
+		return "Bedrijf [bedrijfsnaam=" + bedrijfsnaam + ", adress=" + adress + ", bTWNummer=" + bTWNummer + ", iBAN="
+				+ iBAN + ", bIC=" + bIC + ", sb=" + sb + "]";
 	}
 
 }

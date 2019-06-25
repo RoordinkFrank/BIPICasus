@@ -23,10 +23,10 @@ public class InvoiceExportFormat {
 	private void createBedrijfRegel(FileManager m, Bedrijf bedrijf) throws FileManagerException {
 		m.write ("Type: "+"B"+" ");
 		m.write ("bedrijfsnaam: "+bedrijf.getBedrijfsnaam()+" ");
-		m.write ("straat: "+bedrijf.getStraat()+" ");
-		m.write ("huisnummer: "+bedrijf.getHuisnummer()+" ");
-		m.write ("postcode: "+bedrijf.getPostcode()+" ");
-		m.write ("plaats: "+bedrijf.getPlaats()+" ");
+		m.write ("straat: "+bedrijf.getAdress().getStraat()+" ");
+		m.write ("huisnummer: "+bedrijf.getAdress().getHuisnummer()+" ");
+		m.write ("postcode: "+bedrijf.getAdress().getPostcode()+" ");
+		m.write ("plaats: "+bedrijf.getAdress().getPlaats()+" ");
 		m.write ("BTWNummer: "+bedrijf.getBTWNummer()+" ");
 		m.write ("IBAN: "+bedrijf.getIBAN()+" ");
 		m.writeLine ("BIC: "+bedrijf.getBIC());
