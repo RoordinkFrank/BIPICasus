@@ -22,7 +22,7 @@ public class MongoConn {
 
 	private static final String START_MONGO_LOGGING_ERROR = "XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX";
 	private static Logger logger = LoggerFactory.getLogger(MongoConn.class);
-	private static final DatabaseName DATABASE = DatabaseName.BIPICasus; // default
+	private static final DatabaseName DATABASE = DatabaseName.BIPICASUS; // default
 	private static final String COLLECTIONFACTUUR = "Factuur";
 	private static final MongoClientURI uri = new MongoClientURI(
 			"mongodb+srv://opdracht2admin:opdracht2frank@cluster0-725c7.mongodb.net/test?retryWrites=true");

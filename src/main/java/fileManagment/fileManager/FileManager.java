@@ -159,24 +159,4 @@ public class FileManager{
 			throw new FileManagerException(THE_FILE_READER_IS_ALREADY_CLOSED);
 		}
 	}
-	
-	/**
-	   * finalize is called if the object is destroyed. The garbargecollector is however unreliable with
-	   * destroying objects. You never know when it happens. Do not rely on this method to close your connections.
-	   * It is just a backup in case it happens as there is a good chance but no guarantee that the object will be
-	   * destroyed and thus this method called
-	   * only the garbagecollector is supposed to use this method
-	   */
-
-	protected void finalize(){
-		//can not been thrown as there will be a memory leak if that happens
-		try{
-			closeFileReader();
-		}
-		catch(Exception e){}//nullpointer and filemanager included
-		try{
-			closeFileWriter();
-		}
-		catch(Exception e){}//nullpointer and filemanager included
-	}
 }

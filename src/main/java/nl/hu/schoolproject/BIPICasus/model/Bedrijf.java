@@ -19,12 +19,12 @@ public class Bedrijf {
 	
 	private StringBuilder sb;
 	
-	public Bedrijf(String bedrijfsnaam, String straat, int huisnummer, String postcode, String plaats, String bTWNummer,
+	public Bedrijf(String bedrijfsnaam, Adress adress, String bTWNummer,
 			String iBAN, String bIC) {
 		super();
         sb = new StringBuilder();
 		sb.append(setBedrijfsnaam(bedrijfsnaam));
-		adress = new Adress(huisnummer, postcode, plaats, straat);
+		setAdress(adress);
 		sb.append(adress.checkConstructionErrors());
 		sb.append(setBTWNummer(bTWNummer));
 		sb.append(setIBAN(iBAN));
