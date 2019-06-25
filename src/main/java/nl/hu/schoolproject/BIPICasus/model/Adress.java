@@ -5,9 +5,9 @@ import nl.hu.schoolproject.BIPICasus.Formatter;
 public class Adress {
 	//Bedrijf mag niet meer dan 8 constructor argumenten hebben.
 	//Created met auto move.
-	public int huisnummer;
-	public String postcode;
-	public String plaats;
+	private int huisnummer;
+	private String postcode;
+	private String plaats;
 	private String straat;
 
 	private StringBuilder sb;

@@ -7,8 +7,6 @@ import java.util.List;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.slf4j.Logger;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 import org.slf4j.LoggerFactory;
 
 import com.mongodb.MongoClient;
@@ -22,10 +20,11 @@ import nl.hu.schoolproject.BIPICasus.model.DatabaseName;
 import nl.hu.schoolproject.BIPICasus.model.Factuur;
 public class MongoConn {
 
+	private static final String START_MONGO_LOGGING_ERROR = "XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX";
 	private static Logger logger = LoggerFactory.getLogger(MongoConn.class);
-	private static DatabaseName DATABASE = DatabaseName.BIPICasus; // default
-	private final static String COLLECTIONFACTUUR = "Factuur";
-	private final static MongoClientURI uri = new MongoClientURI(
+	private static final DatabaseName DATABASE = DatabaseName.BIPICasus; // default
+	private static final String COLLECTIONFACTUUR = "Factuur";
+	private static final MongoClientURI uri = new MongoClientURI(
 			"mongodb+srv://opdracht2admin:opdracht2frank@cluster0-725c7.mongodb.net/test?retryWrites=true");
 
 	private MongoConn() {
@@ -48,9 +47,9 @@ public class MongoConn {
 					c.deleteOne(filter);
 				}
 			}
-			mongoClient.close();// is did nodig of wordt dit door de try clausule automatisch aangeroepen?
+			//MongoClient.close is handled auto by try catch.
 		} catch (MongoException mongoException) {
-			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
+			logger.info(START_MONGO_LOGGING_ERROR);
 			logger.info(mongoException.getMessage());
 		}
 		return false;
@@ -71,17 +70,13 @@ public class MongoConn {
 				Document document = it.next();
 				
 				Factuur f = Factuur.getFactuurVersion(document);
-				System.out.println(f.getDate().getMonthValue());
-				System.out.println(month);
-				System.out.println(f.getDate().getYear());
-				System.out.println(year);
 				if (f.getDate().getMonthValue() == month && f.getDate().getYear() == year) {
 					montlyFacturen.add(f);
 				}
 			}
-			mongoClient.close();// is did nodig of wordt dit door de try clausule automatisch aangeroepen?
+			//MongoClient.close is handled auto by try catch.
 		} catch (MongoException mongoException) {
-			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
+			logger.info(START_MONGO_LOGGING_ERROR);
 			logger.info(mongoException.getMessage());
 		}
 		return montlyFacturen;
@@ -104,9 +99,9 @@ public class MongoConn {
 					return document;
 				}
 			}
-			mongoClient.close();// is did nodig of wordt dit door de try clausule automatisch aangeroepen?
+			//MongoClient.close is handled auto by try catch.
 		} catch (MongoException mongoException) {
-			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
+			logger.info(START_MONGO_LOGGING_ERROR);
 			logger.info(mongoException.getMessage());
 		}
 		return null;
@@ -124,9 +119,8 @@ public class MongoConn {
 			MongoDatabase db = mongoClient.getDatabase(name.toString());
 			MongoCollection<Document> c = db.getCollection(COLLECTIONFACTUUR);
 			c.insertOne(Factuur.getDocumentVersion(factuur));
-			logger.info("inserted "+factuur.toString());
 		} catch (MongoException mongoException) {
-			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
+			logger.info(START_MONGO_LOGGING_ERROR);
 			logger.info(mongoException.getMessage());
 			return false;
 		}
