@@ -17,32 +17,32 @@ public class TestFormatter {
 	
 	@Test
 	public void testCheckPostcode() throws FileManagerException{
-		assertEquals(testData.bedrijven.get("werkendBedrijf").checkConstructionErrors(), "");
+		assertEquals("", testData.bedrijven.get("werkendBedrijf").checkConstructionErrors());
 	}
 	
 	@Test
 	public void testPostcodeLetterTeVeel(){
-		assertEquals(testData.bedrijven.get("postcodeLetterTeVeel").checkConstructionErrors(), "postcode is not in the A-Zx4 0-9X2 format");
+		assertEquals("postcode is not in the A-Zx4 0-9X2 format", testData.bedrijven.get("postcodeLetterTeVeel").checkConstructionErrors());
 	}
 	
 	@Test
 	public void testPostcodeCijferTeVeel(){
-		assertEquals(testData.bedrijven.get("postcodeCijferTeVeel").checkConstructionErrors(), "postcode is not in the A-Zx4 0-9X2 format");
+		assertEquals("postcode is not in the A-Zx4 0-9X2 format", testData.bedrijven.get("postcodeCijferTeVeel").checkConstructionErrors());
 	}
 	
 	@Test
 	public void testcheckMaxLength(){
-		assertEquals(testData.bedrijven.get("werkendBedrijf").checkConstructionErrors(), "");
+		assertEquals("", testData.bedrijven.get("werkendBedrijf").checkConstructionErrors());
 	}
 	
 	@Test
 	public void testcheckMaxLengthRandGeval(){
-		assertEquals(testData.bedrijven.get("bicLengte10").checkConstructionErrors(), "");
+		assertEquals("", testData.bedrijven.get("bicLengte10").checkConstructionErrors());
 	}
 	
 	@Test
 	public void testcheckMaxLengthExceeded(){
-		assertEquals(testData.bedrijven.get("bicLengte11").checkConstructionErrors(), "Max length of bIC can not be over 10");
+		assertEquals("Max length of bIC can not be over 10", testData.bedrijven.get("bicLengte11").checkConstructionErrors());
 	}
 	
 	//cijfers te weinig moeten eigenlijk ook nog.
