@@ -15,7 +15,9 @@ public class Factuur{
 	
 	private StringBuilder sb;
 	
-	public Factuur() {}
+	public Factuur() {
+		sb = new StringBuilder();
+	}
 	public Factuur(LocalDateTime date, int nummer, Klant klant, Product product) {
 		super();
 		sb = new StringBuilder();

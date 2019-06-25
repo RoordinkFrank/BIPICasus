@@ -19,6 +19,9 @@ public class Bedrijf {
 	
 	private StringBuilder sb;
 	
+	public Bedrijf() {
+		sb = new StringBuilder();
+	}
 	public Bedrijf(String bedrijfsnaam, Adress adress, String bTWNummer,
 			String iBAN, String bIC) {
 		super();

@@ -16,7 +16,9 @@ public class Product{
 	
 	private StringBuilder sb;
 
-	public Product() {};
+	public Product() {
+		sb = new StringBuilder();
+	};
 	public Product(int productID, String productNaame, double quantity, double totaalprijsExBTWp, BTWCode btwCode,
 			String unit) {
 		super();

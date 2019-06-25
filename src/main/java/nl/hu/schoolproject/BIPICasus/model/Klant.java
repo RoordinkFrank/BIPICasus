@@ -10,7 +10,9 @@ public class Klant{
 	
 	private StringBuilder sb;
 	
-	public Klant() {}
+	public Klant() {
+		sb = new StringBuilder();
+	}
 	public Klant(String id) {
 		setId(id);
 		sb = new StringBuilder();

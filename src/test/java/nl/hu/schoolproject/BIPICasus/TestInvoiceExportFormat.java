@@ -29,8 +29,6 @@ private static TestData testData;
 		
 		InvoiceExportFormat invoiceFormat = new InvoiceExportFormat();
 		invoiceFormat.createInvoice(testData.bedrijven.get("werkendBedrijf"), facturen);
-		invoiceFormat.createInvoice(testData.bedrijven.get("postcodeLetterTeVeel"), facturen);
-		invoiceFormat.createInvoice(testData.bedrijven.get("postcodeCijferTeVeel"), facturen);
 		//Alle variatie van werkend bedrijf zouden hier eigenlijk opnieuw moeten worden getest.
 	}
 }
