@@ -45,6 +45,10 @@ public class TestMongoConn {
 	
 	@AfterAll
 	private static void cleanup() {
+		MongoConn.removeFactuur(1, DatabaseName.BIPICasusTest);
+		MongoConn.removeFactuur(3, DatabaseName.BIPICasusTest);
+		MongoConn.removeFactuur(4, DatabaseName.BIPICasusTest);
+		MongoConn.removeFactuur(5, DatabaseName.BIPICasusTest);
 		//remove factuur werkt niet als er eerder wat (rood) crasht in de unit test.
 		//vandaar dat het in een aparte cleanup methode staat.
 	}
