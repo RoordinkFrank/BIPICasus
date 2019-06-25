@@ -17,7 +17,8 @@ public class BIPIUtil {
 	public static LocalDateTime convertStringToLocalDateTime(String string) {
 		//binnenkomende format "2019-06-21T16:37:46.331541800"
 		String[] split = string.split("-|T|:|\\.");		
-		return  LocalDateTime.of(Integer.valueOf(split[0]), Integer.valueOf(split[1]), Integer.valueOf(split[2]), Integer.valueOf(split[3]), Integer.valueOf(split[4]), Integer.valueOf(split[5]));
+		LocalDateTime localDateTime =  LocalDateTime.of(Integer.valueOf(split[0]), Integer.valueOf(split[1]), Integer.valueOf(split[2]), Integer.valueOf(split[3]), Integer.valueOf(split[4]), Integer.valueOf(split[5]));
+		return localDateTime;
 	}
 	
 	public static String getDate(LocalDateTime localDateTime) {
