@@ -16,17 +16,15 @@ public class Product{
 	
 	private StringBuilder sb;
 
-	public Product() {
-	};
-
+	public Product() {};
 	public Product(int productID, String productNaame, double quantity, double totaalprijsExBTWp, BTWCode btwCode,
 			String unit) {
 		super();
 		sb = new StringBuilder();
 		this.productID = productID;
 		this.productNaame = productNaame;
-		sb.append(this.quantity = quantity);
-		sb.append(this.totaalprijsExBTWp = totaalprijsExBTWp);
+		sb.append(setQuantity(quantity));
+		sb.append(setTotaalprijsExBTWp(totaalprijsExBTWp));
 		this.btwCode = btwCode;
 		this.unit = unit;
 	}
@@ -48,13 +46,12 @@ public class Product{
 	}
 	
     public static Document getDocumentVersion(Product localP) {
-    	Document doc = new Document("productID", localP.productID)
+    	return new Document("productID", localP.productID)
 		        .append("productNaame", localP.productNaame)
 		        .append("quantity", localP.quantity)
 		        .append("totaalprijsExBTWp", localP.totaalprijsExBTWp)
 		        .append("btwCode", localP.btwCode.toString())
 		        .append("unit", localP.unit);
-    	return doc;
     }
 
 	public int getProductID() {

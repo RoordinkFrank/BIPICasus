@@ -28,8 +28,7 @@ public class Klant{
 	}
 	
 	public static Document getDocumentVersion(Klant localK) {
-    	Document doc = new Document("klantID", localK.klantID);
-    	return doc;
+    	return new Document("klantID", localK.klantID);
     }
 	
 	public String getId() {

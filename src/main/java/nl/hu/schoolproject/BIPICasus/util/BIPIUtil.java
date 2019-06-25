@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class BIPIUtil {
+	private BIPIUtil() {}
+	
 	//Java8+, werkt niet in Mongo zo te zien.
 	public static String getCurrentTime() {
 		LocalDate date = LocalDate.now(); 
@@ -12,11 +14,10 @@ public class BIPIUtil {
 	    return date.format(formatter);
 	}
 
-	public static LocalDateTime ConvertStringToLocalDateTime(String string) {
+	public static LocalDateTime convertStringToLocalDateTime(String string) {
 		//binnenkomende format "2019-06-21T16:37:46.331541800"
 		String[] split = string.split("-|T|:|\\.");		
-		LocalDateTime localDateTime = LocalDateTime.of(Integer.valueOf(split[0]), Integer.valueOf(split[1]), Integer.valueOf(split[2]), Integer.valueOf(split[3]), Integer.valueOf(split[4]), Integer.valueOf(split[5]));
-		return localDateTime;
+		return  LocalDateTime.of(Integer.valueOf(split[0]), Integer.valueOf(split[1]), Integer.valueOf(split[2]), Integer.valueOf(split[3]), Integer.valueOf(split[4]), Integer.valueOf(split[5]));
 	}
 	
 	public static String getDate(LocalDateTime localDateTime) {

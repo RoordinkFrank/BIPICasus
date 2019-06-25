@@ -30,7 +30,7 @@ public class Factuur{
 	public static Factuur getFactuurVersion(Document mongoObject) {
 		Factuur f = new Factuur();
 		//MongoDB pakt LocalDate time niet goed, Date wel maar daar krijg ik depricated errors.
-		f.date = BIPIUtil.ConvertStringToLocalDateTime((String) mongoObject.get("LocalDateTime"));
+		f.date = BIPIUtil.convertStringToLocalDateTime((String) mongoObject.get("LocalDateTime"));
 		f.nummer = (int)mongoObject.get("nummer");
 		f.klant =  Klant.getKlantVersion((Document) mongoObject.get("klant"));
 		f.product = Product.getProductVersion((Document) mongoObject.get("product"));
@@ -43,11 +43,10 @@ public class Factuur{
 	}
 	
 	public static Document getDocumentVersion(Factuur localF) {
-		Document  doc = new Document ("LocalDateTime", localF.getDate().toString())
+		return new Document ("LocalDateTime", localF.getDate().toString())
 		        .append("nummer", localF.getNummer())
 		        .append("klant",  Klant.getDocumentVersion(localF.getKlant()))
 		        .append("product", Product.getDocumentVersion(localF.getProduct()));
-		return doc;
 	}
 	
 	

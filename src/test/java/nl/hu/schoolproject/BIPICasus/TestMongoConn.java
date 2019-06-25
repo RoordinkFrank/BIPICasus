@@ -36,7 +36,7 @@ public class TestMongoConn {
 		MongoConn.insertFactuur(testData.facturen.get("testRetrieveMontlyFacturen3"), DatabaseName.BIPICASUSTEST);
 		List<Factuur> montlyFacturen = MongoConn.retrieveMontlyFacturen(1992, 9);
 			System.out.println(montlyFacturen.size());
-			assertEquals(2, montlyFacturen.size());
+			assertEquals(montlyFacturen.size(), 2);
 			assertEquals(testData.facturen.get("testRetrieveMontlyFacturen1"), montlyFacturen.get(0));
 			assertEquals(testData.facturen.get("testRetrieveMontlyFacturen2"), montlyFacturen.get(1));
 			//Als dit synchroon is gaat het goed, mocht dit asynchroon gaan dan moet hier wat
