@@ -5,13 +5,13 @@ import nl.hu.schoolproject.BIPICasus.Formatter;
 public class Bedrijf {
 	
 	private String bedrijfsnaam;
-	private String Straat;
+	private String straat;
 	private int huisnummer;
 	private String postcode;
 	private String plaats;
-	private String BTWNummer;
-	private String IBAN;
-	private String BIC;
+	private String bTWNummer;
+	private String iBAN;
+	private String bIC;
 	
 	private StringBuilder sb;
 	
@@ -44,12 +44,12 @@ public class Bedrijf {
         return error;
 	}
 	public String getStraat() {
-		return Straat;
+		return straat;
 	}
 	public String setStraat(String straat) {
 		String error = Formatter.checkMaxLength(straat, "straat", 60);
         if (error.equals("")) {
-    		Straat = straat;
+    		this.straat = straat;
         }
         return error;
 	}
@@ -84,40 +84,40 @@ public class Bedrijf {
         return error;
 	}
 	public String getBTWNummer() {
-		return BTWNummer;
+		return bTWNummer;
 	}
 	public String setBTWNummer(String bTWNummer) {
 		String error = Formatter.checkMaxLength(bTWNummer, "bTWNummer", 13);
         if (error.equals("")) {
-        	BTWNummer = bTWNummer;
+        	this.bTWNummer = bTWNummer;
         }
         return error;	
 	}
 	public String getIBAN() {
-		return IBAN;
+		return iBAN;
 	}
 	public String setIBAN(String iBAN) {
 		String error = Formatter.checkMaxLength(iBAN, "iBAN", 64);
         if (error.equals("")) {
-        	IBAN = iBAN;
+        	this.iBAN = iBAN;
         }
         return error;	
 	}
 	public String getBIC() {
-		return BIC;
+		return bIC;
 	}
 	public String setBIC(String bIC) {
 		String error = Formatter.checkMaxLength(bIC, "bIC", 10);
         if (error.equals("")) {
-    		BIC = bIC;
+    		this.bIC = bIC;
         }
         return error;	
 	}
 	@Override
 	public String toString() {
-		return "Bedrijf [bedrijfsnaam=" + bedrijfsnaam + ", Straat=" + Straat + ", huisnummer=" + huisnummer
-				+ ", postcode=" + postcode + ", plaats=" + plaats + ", BTWNummer=" + BTWNummer + ", IBAN=" + IBAN
-				+ ", BIC=" + BIC + "]";
+		return "Bedrijf [bedrijfsnaam=" + bedrijfsnaam + ", Straat=" + straat + ", huisnummer=" + huisnummer
+				+ ", postcode=" + postcode + ", plaats=" + plaats + ", BTWNummer=" + bTWNummer + ", IBAN=" + iBAN
+				+ ", BIC=" + bIC + "]";
 	}
 
 }
