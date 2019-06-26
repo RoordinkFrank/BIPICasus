@@ -34,7 +34,7 @@ public class TestMongoConn {
 		MongoConn.insertFactuur(testData.facturen.get("testRetrieveMontlyFacturen1"), DatabaseName.BIPICasusTest);
 		MongoConn.insertFactuur(testData.facturen.get("testRetrieveMontlyFacturen2"), DatabaseName.BIPICasusTest);
 		MongoConn.insertFactuur(testData.facturen.get("testRetrieveMontlyFacturen3"), DatabaseName.BIPICasusTest);
-		List<Factuur> montlyFacturen = MongoConn.retrieveMontlyFacturen(1992, 9);
+		List<Factuur> montlyFacturen = MongoConn.retrieveMontlyFacturen(1992, 9,  DatabaseName.BIPICasusTest);
 			System.out.println(montlyFacturen.size());
 			assertEquals(montlyFacturen.size(), 2);
 			assertEquals(testData.facturen.get("testRetrieveMontlyFacturen1"), montlyFacturen.get(0));

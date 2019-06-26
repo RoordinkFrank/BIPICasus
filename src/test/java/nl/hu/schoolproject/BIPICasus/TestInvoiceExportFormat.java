@@ -21,7 +21,6 @@ private static TestData testData;
 	@Test
 	public void testCreateInvoice() throws FileManagerException{
 		//kan alleen worden gecheckt zodra files ook weer uitgelezen worden,
-		//maar dat is niet onderdeel van de opdracht?
 		//handmatige controles via files bekijken wel mogelijk
 		List<Factuur> facturen = new ArrayList<Factuur>();
 		facturen.add(testData.facturen.get("testRetrieveMontlyFacturen1"));
